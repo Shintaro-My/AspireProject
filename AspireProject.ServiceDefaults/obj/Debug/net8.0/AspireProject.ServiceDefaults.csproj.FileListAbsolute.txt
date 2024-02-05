@@ -1,0 +1,12 @@
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\bin\Debug\net8.0\AspireProject.ServiceDefaults.deps.json
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\bin\Debug\net8.0\AspireProject.ServiceDefaults.dll
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\bin\Debug\net8.0\AspireProject.ServiceDefaults.pdb
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.csproj.AssemblyReference.cache
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.AssemblyInfoInputs.cache
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.AssemblyInfo.cs
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.csproj.CoreCompileInputs.cache
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.dll
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\refint\AspireProject.ServiceDefaults.dll
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.pdb
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\ref\AspireProject.ServiceDefaults.dll
