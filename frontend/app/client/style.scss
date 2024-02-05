@@ -1,0 +1,19 @@
+
+.content_wrap {
+    background: #fff;
+    box-shadow: 1px 1px 3px #aaa;
+    margin: .35em;
+    padding: .5em;
+}
+
+.item-option {
+    --borderColor: #555;
+    border: 1px solid var(--borderColor);
+    padding: .5em;
+
+    &.checked {
+        --borderColor: #fffa;
+        background: rgba(12, 74, 110, 0.75);
+        color: #fff;
+    }
+}

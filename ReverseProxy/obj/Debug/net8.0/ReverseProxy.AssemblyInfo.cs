@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReverseProxy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8940da3d160b8ba4a9e55cf2b55ad94a94a60ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReverseProxy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReverseProxy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
