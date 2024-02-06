@@ -63,3 +63,4 @@ C:\Users\ShintaroMiyahara\source\repos\AspireProject\ReverseProxy\obj\Debug\net8
 C:\Users\ShintaroMiyahara\source\repos\AspireProject\ReverseProxy\obj\Debug\net8.0\ReverseProxy.pdb
 C:\Users\ShintaroMiyahara\source\repos\AspireProject\ReverseProxy\obj\Debug\net8.0\ReverseProxy.genruntimeconfig.cache
 C:\Users\ShintaroMiyahara\source\repos\AspireProject\ReverseProxy\obj\Debug\net8.0\ref\ReverseProxy.dll
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\ReverseProxy\obj\Debug\net8.0\ReverseProxy.sourcelink.json
