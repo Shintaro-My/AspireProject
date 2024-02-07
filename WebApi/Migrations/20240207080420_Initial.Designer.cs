@@ -11,7 +11,7 @@ using WebApi.Models;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(WebAPIDbContext))]
-    [Migration("20240206050010_Initial")]
+    [Migration("20240207080420_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -38,6 +38,9 @@ namespace WebApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("UserId");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
 
                     b.ToTable("UserModels");
 

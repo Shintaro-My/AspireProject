@@ -43,10 +43,10 @@ namespace WebApi.Controllers
                 .FirstOrDefaultAsync(u => u.UserName == userLoginModel.UserName && u.PasswordHash == hash);
             if (userModel == null)
             {
-                return BadRequest();
+                return Unauthorized();
             }
 
-            var roleDesc = UserRolesConverter.GetDescription(userModel.Role);
+            var roleDesc = UserRolesUtil.GetDescription(userModel.Role);
 
             Console.WriteLine(roleDesc);
 
@@ -70,6 +70,32 @@ namespace WebApi.Controllers
             );
 
             return Ok();
+        }
+
+        [HttpGet("session")]
+        public ActionResult CheckSession()
+        {
+
+            var claims = HttpContext.User.Claims;
+            var uId = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var uName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            var role = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            return Ok(new
+            {
+                UserId = uId,
+                UserName = uName,
+                Role = role != null ? (int)UserRolesUtil.GetEnum(role) : -1,
+            });
+        }
+        [HttpGet("roles")]
+        public ActionResult GetRoles()
+        {
+            var obj = new Dictionary<int, string>();
+            foreach(UserRoles role in Enum.GetValues(typeof(UserRoles)))
+            {
+                obj.Add((int)role, UserRolesUtil.GetDescription(role));
+            }
+            return Ok(obj);
         }
 
     }

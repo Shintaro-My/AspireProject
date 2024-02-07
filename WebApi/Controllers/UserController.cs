@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/User/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:Guid}")]
         public async Task<ActionResult<UserModel>> GetUserModel(Guid id)
         {
             var userModel = await _context.UserModels.FindAsync(id);
@@ -45,13 +46,13 @@ namespace WebApi.Controllers
 
         // PUT: api/User/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        [IsHigherThan(UserRoles.User)]
+        [HttpPut("{id:Guid}")]
         public async Task<IActionResult> PutUserModel(Guid id, UserRequestModel userRequestModel)
         {
-            if (id != userRequestModel.UserId)
+            var isAdmin = CompareRole(UserRoles.Moderator);
+            if (!CheckMySelf(id) && !isAdmin)
             {
-                return BadRequest();
+                return Unauthorized("自分のデータではないか、権限不足です");
             }
             var userModel = await _context.UserModels.FindAsync(id);
             if (userModel == null)
@@ -63,7 +64,7 @@ namespace WebApi.Controllers
                 return BadRequest("同名のユーザーがいます");
             }
 
-            userModel = userModel.Merge(userRequestModel);
+            userModel = userModel.Merge(id, userRequestModel);
             _context.Entry(userModel).State = EntityState.Modified;
 
             try
@@ -88,9 +89,9 @@ namespace WebApi.Controllers
         // POST: api/User
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserModel>> PostUserModel(UserRequestModel userRequestModel)
+        public async Task<ActionResult<UserModel>> PostUserModel([FromBody] UserRequestModel userRequestModel)
         {
-            var newUser = new UserModel().Merge(userRequestModel);
+            var newUser = new UserModel().Merge(Guid.Empty, userRequestModel);
 
             if (UserModelExists(newUser.UserName))
             {
@@ -104,8 +105,8 @@ namespace WebApi.Controllers
         }
 
         // DELETE: api/User/5
-        [HttpDelete("{id}")]
-        [IsHigherThan(UserRoles.Mod)]
+        [HttpDelete("{id:Guid}")]
+        [IsHigherThan(UserRoles.Moderator)]
         public async Task<IActionResult> DeleteUserModel(Guid id)
         {
             var userModel = await _context.UserModels.FindAsync(id);
@@ -127,6 +128,24 @@ namespace WebApi.Controllers
         private bool UserModelExists(string name)
         {
             return _context.UserModels.Any(e => e.UserName == name);
+        }
+        private bool CompareRole(UserRoles target)
+        {
+            var role = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            if (role == null)
+            {
+                return false;
+            }
+            return target <= UserRolesUtil.GetEnum(role);
+        }
+        private bool CheckMySelf(Guid targetUserId)
+        {
+            var role = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (role == null)
+            {
+                return false;
+            }
+            return targetUserId.ToString() == role;
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -31,14 +33,14 @@ namespace WebApi.Models
                 return hash;
             }
         }
-        public UserModel Merge(UserRequestModel req, bool canRoleChange = false)
+        public UserModel Merge(Guid userId, UserRequestModel req, bool canRoleChange = false)
         {
-            if (req.UserId == Guid.Empty && UserId == Guid.Empty) // 新規作成
+            if (userId == Guid.Empty && UserId == Guid.Empty) // 新規作成
             {
                 UserId = Guid.NewGuid();
                 Role = UserRoles.Guest;
             }
-            else if (req.UserId == UserId) // 編集
+            else if (userId == UserId) // 編集
             {
                 if (canRoleChange && req.Role != null)
                 {
@@ -63,11 +65,11 @@ namespace WebApi.Models
         [Description("User")]
         User = 1,
         [Description("Moderator")]
-        Mod = 2,
+        Moderator = 2,
         [Description("Administrator")]
         Admin = 3
     }
-    public class UserRolesConverter
+    public class UserRolesUtil
     {
         static public string GetDescription(UserRoles uRole)
         {
@@ -113,7 +115,6 @@ namespace WebApi.Models
 
     public class UserRequestModel
     {
-        public Guid UserId { get; set; } = Guid.Empty;
         public string UserName { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public UserRoles? Role { get; set; }

@@ -42,6 +42,26 @@
     ]
   },
   {
+    "ContainingType": "WebApi.Controllers.AuthController",
+    "Method": "GetRoles",
+    "RelativePath": "api/Auth/roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.AuthController",
+    "Method": "CheckSession",
+    "RelativePath": "api/Auth/session",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApi.Controllers.UserController",
     "Method": "GetUserModels",
     "RelativePath": "api/User",

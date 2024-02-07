@@ -29,6 +29,12 @@ namespace WebApi.Migrations
                 table: "UserModels",
                 columns: new[] { "UserId", "PasswordHash", "Role", "UserName" },
                 values: new object[] { new Guid("9e0957e4-fd0f-4241-ba12-67c9fa73d0ab"), "a075d17f3d453073853f813838c15b8023b8c487038436354fe599c3942e1f95", 3, "admin" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserModels_UserName",
+                table: "UserModels",
+                column: "UserName",
+                unique: true);
         }
 
         /// <inheritdoc />
