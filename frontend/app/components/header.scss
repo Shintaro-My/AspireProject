@@ -1,0 +1,81 @@
+
+@function MainGradient($opacity) {
+    @return to right, rgba(251, 146, 60, $opacity), rgba(219, 39, 119, $opacity)
+}
+
+.header {
+    align-items: center;
+    background: linear-gradient(MainGradient(1));
+    box-shadow: 0 1px 3px #888;
+    display: flex;
+    justify-content: space-between;
+    padding: .5em;
+
+    .user_info {
+        position: relative;
+
+        &_toggle {
+            align-items: center;
+            background: rgba(240, 34, 92, 0.75);
+            border: none;
+            border-radius: 0.3em;
+            color: #fff;
+            cursor: pointer;
+            display: inline-flex;
+            flex-grow: 1;
+            font-weight: bold;
+            justify-content: center;
+            outline: 2px solid transparent;
+            padding: .5em .75em;
+            text-align: center;
+            transition: all .2s;
+
+            &:focus {
+                outline-color: transparent;
+            }
+            &:hover,
+            &[aria-expanded="true"] {
+                outline-color: #f8f8f8;
+            }
+            &.active::before {
+                content: "@";
+                font-size: .8em;
+                padding: 0 .25em 0 0;
+            }
+        }
+        &_content {
+            --content-gap: .75em;
+            background: linear-gradient(MainGradient(.8)), #fff;
+            border-radius: 0.3em;
+            box-shadow: 0 0 3px #888;
+            margin: var(--content-gap) 0 0;
+            opacity: 1;
+            padding: .75em 1em;
+            position: absolute;
+            right: 0;
+            transform: none;
+            transition: all .2s;
+
+            &.inactive {
+                opacity: 0;
+                transform: translateY(calc(-1 * var(--content-gap)));
+            }
+
+            &_table {
+                display: grid;
+                font-size: .8em;
+                grid-template-columns: 7em 1fr;
+                row-gap: .5em;
+
+                &_key {
+                    font-weight: bold;
+                }
+                &_wide {
+                    display: flex;
+                    grid-column: 1 / 3;
+                    padding: .75em 0 0;
+                }
+            }
+        }
+    }
+}
