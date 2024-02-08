@@ -69,7 +69,7 @@ namespace WebApi.Controllers
                 }
             );
 
-            return Ok();
+            return RedirectToAction(nameof(CheckSession));
         }
 
         [HttpGet("session")]
