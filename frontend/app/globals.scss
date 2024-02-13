@@ -96,6 +96,15 @@ body {
   height: 100vh;
 }
 
+body > div.main {
+  margin-top: var(--header-height);
+  padding: 2em .75em 0;
+}
+
+h1 {
+  padding: .75em 0;
+}
+
 a {
   color: inherit;
   text-decoration: none;

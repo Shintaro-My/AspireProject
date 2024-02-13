@@ -1,42 +1,29 @@
 
-@function MainGradient($opacity) {
-    @return to right, rgba(251, 146, 60, $opacity), rgba(219, 39, 119, $opacity)
+@use "./mixin.scss";
+
+:root {
+    --header-height: 3rem;
 }
 
 .header {
     align-items: center;
-    background: linear-gradient(MainGradient(1));
+    background: linear-gradient(mixin.MainGradient(1));
     box-shadow: 0 1px 3px #888;
     display: flex;
+    height: var(--header-height);
     justify-content: space-between;
-    padding: .5em;
+    padding: 0 .5em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
 
     .user_info {
         position: relative;
 
         &_toggle {
-            align-items: center;
-            background: rgba(240, 34, 92, 0.75);
-            border: none;
-            border-radius: 0.3em;
-            color: #fff;
-            cursor: pointer;
-            display: inline-flex;
-            flex-grow: 1;
-            font-weight: bold;
-            justify-content: center;
-            outline: 2px solid transparent;
-            padding: .5em .75em;
-            text-align: center;
-            transition: all .2s;
+            @include mixin.button;
 
-            &:focus {
-                outline-color: transparent;
-            }
-            &:hover,
-            &[aria-expanded="true"] {
-                outline-color: #f8f8f8;
-            }
             &.active::before {
                 content: "@";
                 font-size: .8em;
@@ -44,21 +31,72 @@
             }
         }
         &_content {
-            --content-gap: .75em;
-            background: linear-gradient(MainGradient(.8)), #fff;
+            --content-gap: .35em;
+            background: linear-gradient(mixin.MainGradient(.8)), #fff;
             border-radius: 0.3em;
             box-shadow: 0 0 3px #888;
-            margin: var(--content-gap) 0 0;
             opacity: 1;
             padding: .75em 1em;
-            position: absolute;
-            right: 0;
+            position: fixed;
+            right: .75em;
+            text-shadow: 0 0 3px #fff;
+            top: calc(var(--header-height) + var(--content-gap));
             transform: none;
             transition: all .2s;
 
             &.inactive {
                 opacity: 0;
+                pointer-events: none;
                 transform: translateY(calc(-1 * var(--content-gap)));
+            }
+
+            button {
+                @include mixin.button;
+            }
+
+            &_form {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                text-align: center;
+                gap: .5em;
+
+                .label {
+                    align-items: center;
+                    background: #fff;
+                    border-radius: .35em;
+                    display: flex;
+                    padding: .5em;
+                    position: relative;
+
+                    &:focus-within {
+                        outline: 2px solid rgb(90, 156, 255);
+                    }
+                    &_char {
+                        color: #aaa;
+                        font-size: .65em;
+                        font-weight: bold;
+                        padding: 0 .25em;
+                        user-select: none;
+                    }
+                    &_key {
+                        display: block;
+                        font-weight: bold;
+                    }
+                    &_value {
+                        background: transparent;
+                        border: none;
+                        flex-grow: 1;
+                        font-family: initial;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                    &_error {
+                        display: block;
+                        font-size: .8em;
+                    }
+                }
             }
 
             &_table {

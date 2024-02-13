@@ -1,2 +1,2 @@
-DB/*.db
-DB/*.db-*
+DB/*
+!DB/readme.txt
