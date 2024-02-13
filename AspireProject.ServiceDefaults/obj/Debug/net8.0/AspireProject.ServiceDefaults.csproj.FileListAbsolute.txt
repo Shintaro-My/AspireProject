@@ -10,3 +10,4 @@ C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaul
 C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\refint\AspireProject.ServiceDefaults.dll
 C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.pdb
 C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\ref\AspireProject.ServiceDefaults.dll
+C:\Users\ShintaroMiyahara\source\repos\AspireProject\AspireProject.ServiceDefaults\obj\Debug\net8.0\AspireProject.ServiceDefaults.sourcelink.json

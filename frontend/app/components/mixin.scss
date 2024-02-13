@@ -1,0 +1,28 @@
+@function MainGradient($opacity) {
+    @return to right, rgba(251, 146, 60, $opacity), rgba(219, 39, 119, $opacity)
+}
+
+@mixin button {
+    align-items: center;
+    background: rgba(240, 34, 92, 0.75);
+    border: none;
+    border-radius: 0.3em;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    flex-grow: 1;
+    font-weight: bold;
+    justify-content: center;
+    outline: 2px solid transparent;
+    padding: .5em .75em;
+    text-align: center;
+    transition: all .2s;
+
+    &:focus {
+        outline-color: transparent;
+    }
+    &:hover,
+    &[aria-expanded="true"] {
+        outline-color: #f8f8f8;
+    }
+}

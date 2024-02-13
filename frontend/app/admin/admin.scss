@@ -1,0 +1,56 @@
+
+.admin {
+    &_users {
+        display: grid;
+        gap: .35em;
+        grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+        grid-template-rows: repeat(auto-fit, 4em);
+        max-width: 1024px;
+        padding: .5em;
+
+        &_option {
+
+            &_content {
+                --sub-color: #888;
+                background: #fff;
+                box-shadow: 1px 1px 3px #333;
+                display: grid;
+                flex-grow: 1;
+                grid-template-columns: 2em 1fr 2em;
+                height: 100%;
+                padding: .2em .35em;
+                transition: all .2s;
+
+                &.checked {
+                    --sub-color: #fff;
+                    background: rgba(240, 34, 92, 1);
+                    color: #fff;
+                }
+
+                &_icon{
+                    > * {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                &_group {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding: 0 .5em;
+
+                    &_label {
+                        font-size: 1.1em;
+                        font-weight: bold;
+                        width: 100%;
+                    }
+                    &_desc {
+                        color: var(--sub-color);
+                        font-size: .9em;
+                    }
+                }
+            }
+        }
+    }
+}
