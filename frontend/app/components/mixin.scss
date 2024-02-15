@@ -3,10 +3,12 @@
 }
 
 @mixin button {
+    --button-bg: var(--main-accent);
     align-items: center;
-    background: rgba(240, 34, 92, 0.75);
+    background: rgba(var(--button-bg), 0.75);
     border: none;
     border-radius: 0.3em;
+    box-shadow: 0 0 2px #fff, 0 0 4px #fff;
     color: #fff;
     cursor: pointer;
     display: inline-flex;

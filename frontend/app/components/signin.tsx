@@ -3,8 +3,9 @@
 import { useEffect, useState, useContext, FormEvent, Dispatch, SetStateAction } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Tooltip } from 'react-tooltip'
+import { Switch } from '@headlessui/react'
 
-import { SignIn, SessionInfo, NullSession, FetchSession, RolesInfo } from '../sessionCC'
+import { SignIn, SessionInfo, CreateAccount, SessionCCError } from '../sessionCC'
 
 type UserFormType = {
     username: string,
@@ -16,6 +17,7 @@ type Props = {
     className?: string
 }
 const SignInForm = ({ handler, className }: Props) => {
+    const [isSignUp, setIsSignUp] = useState<boolean>(false)
     const {
         handleSubmit,
         register,
@@ -28,6 +30,14 @@ const SignInForm = ({ handler, className }: Props) => {
         setError
     } = useForm<UserFormType>({ mode: 'onChange' })
     const onSubmit: SubmitHandler<UserFormType> = async (data) => {
+        if (isSignUp) {
+            try {
+                await CreateAccount(data.username, data.password)
+            } catch(e) {
+                if (e instanceof SessionCCError) setError('root.serverError', { type: 'already_exists' })
+                return
+            }
+        }
         const session = await SignIn(data.username, data.password)
         if (session) {
             handler?.(session)
@@ -37,6 +47,7 @@ const SignInForm = ({ handler, className }: Props) => {
             setValue('password', '')
             setError('root.serverError', { type: 'unauth' })
         }
+        return
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={className}>
@@ -49,7 +60,17 @@ const SignInForm = ({ handler, className }: Props) => {
                 <a data-tooltip-id='pswrd'></a>
                 <input type="password" className='label_value' placeholder='Password' { ...register('password', { required: true }) } />
             </label>
-            <button type='submit' disabled={!isValid || isSubmitting}>SignIn</button>
+            <div className="check">
+                <Switch checked={isSignUp} onChange={setIsSignUp} className={`check_box${isSignUp ? ' checked' : ''}`}>
+                    <div className={`check_box_toggle${isSignUp ? ' checked' : ''}`} area-hidden='true'></div>
+                </Switch>
+                <div className="check_label">
+                    <span className={isSignUp ? '' : 'bold'}>SignIn</span> or <span className={isSignUp ? 'bold' : ''}>Create</span>
+                </div>
+            </div>
+            <div className="buttons">
+                <button type='submit' disabled={!isValid || isSubmitting} className={isSignUp ? 'sub': ''}>{isSignUp ? 'Create Account' : 'SignIn'}</button>
+            </div>
             
             {errors.username && (
                 <Tooltip

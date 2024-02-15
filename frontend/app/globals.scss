@@ -9,6 +9,10 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
+  --main-accent: 240, 34, 92;
+  --sub-accent: 240, 134, 47;
+  --main-outline: 2px solid rgb(90, 156, 255);
+
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -93,6 +97,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-size: .8em;
   height: 100vh;
 }
 
@@ -113,5 +118,23 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+a, button {
+  cursor: pointer;
+}
+
+button.simple {
+  background: transparent;
+  border: none;
+  color: #888;
+  padding: .35em;
+  transition: all .2s;
+
+  &:focus,
+  &:hover {
+    color: #555;
+    outline: none;
   }
 }

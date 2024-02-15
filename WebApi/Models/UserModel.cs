@@ -37,8 +37,13 @@ namespace WebApi.Models
         {
             if (userId == Guid.Empty && UserId == Guid.Empty) // 新規作成
             {
+                if (req.Password == null)
+                {
+                    throw new InvalidOperationException("パスワード無しの場合、新規作成できません");
+                }
                 UserId = Guid.NewGuid();
                 Role = UserRoles.Guest;
+                PasswordHash = getHashFromPassword(req.Password);
             }
             else if (userId == UserId) // 編集
             {
@@ -46,13 +51,16 @@ namespace WebApi.Models
                 {
                     Role = req.Role.Value;
                 }
+                if (req.Password != null)
+                {
+                    PasswordHash = getHashFromPassword(req.Password);
+                }
             }
             else
             {
                 throw new InvalidOperationException("異なるIDのユーザーはマージできません");
             }
             UserName = req.UserName;
-            PasswordHash = getHashFromPassword(req.Password);
             return this;
         }
     }
@@ -116,7 +124,7 @@ namespace WebApi.Models
     public class UserRequestModel
     {
         public string UserName { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
+        public string? Password { get; set; } = string.Empty;
         public UserRoles? Role { get; set; }
     }
 

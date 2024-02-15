@@ -11,6 +11,7 @@ namespace WebApi.Models
         {  }
 
         public DbSet<UserModel> UserModels { get; set; }
+        public DbSet<TrackingModel> TrackingModels { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

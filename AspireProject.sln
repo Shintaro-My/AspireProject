@@ -5,11 +5,16 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{D770FE22-65EF-4404-B548-8266121F311D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireProject.AppHost", "AspireProject.AppHost\AspireProject.AppHost.csproj", "{2423D8CB-528D-4FCD-8E94-4F401AEC267B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireProject.AppHost", "AspireProject.AppHost\AspireProject.AppHost.csproj", "{2423D8CB-528D-4FCD-8E94-4F401AEC267B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireProject.ServiceDefaults", "AspireProject.ServiceDefaults\AspireProject.ServiceDefaults.csproj", "{9B2D944D-2E82-4A1B-8FBB-1C117EB5D84D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReverseProxy", "ReverseProxy\ReverseProxy.csproj", "{AA723424-595F-4361-8FF4-415631777399}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{917B8E2E-E5A5-4CD6-9FC3-CCABEEC1B48D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

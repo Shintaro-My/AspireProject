@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\models\\webapidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\models\\webapidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\controllers\\customfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\customfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\models\\trackingmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\models\\trackingmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\models\\webapidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\models\\webapidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\util\\sendrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\util\\sendrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D770FE22-65EF-4404-B548-8266121F311D}|WebApi\\WebApi.csproj|c:\\users\\shintaromiyahara\\source\\repos\\aspireproject\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +50,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
+              "Title": "SendRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Util\\SendRequest.cs",
+              "RelativeDocumentMoniker": "WebApi\\Util\\SendRequest.cs",
+              "ToolTip": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Util\\SendRequest.cs",
+              "RelativeToolTip": "WebApi\\Util\\SendRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-14T02:42:10.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\AuthController.cs",
@@ -54,12 +70,11 @@
               "RelativeToolTip": "WebApi\\Controllers\\AuthController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-07T09:38:51.683Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-02-07T09:38:51.683Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Program.cs",
               "RelativeDocumentMoniker": "WebApi\\Program.cs",
@@ -71,55 +86,53 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Controllers\\UserController.cs",
               "RelativeToolTip": "WebApi\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAiwGcAAAAiAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAAcwEIAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-06T05:24:30.454Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CustomFilter.cs",
-              "DocumentMoniker": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Controllers\\CustomFilter.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\CustomFilter.cs",
-              "ToolTip": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Controllers\\CustomFilter.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\CustomFilter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-06T09:10:02.347Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "UserModel.cs",
               "DocumentMoniker": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Models\\UserModel.cs",
               "RelativeDocumentMoniker": "WebApi\\Models\\UserModel.cs",
               "ToolTip": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Models\\UserModel.cs",
               "RelativeToolTip": "WebApi\\Models\\UserModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHQAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-06T02:36:40.531Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "TrackingModel.cs",
+              "DocumentMoniker": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Models\\TrackingModel.cs",
+              "RelativeDocumentMoniker": "WebApi\\Models\\TrackingModel.cs",
+              "ToolTip": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Models\\TrackingModel.cs",
+              "RelativeToolTip": "WebApi\\Models\\TrackingModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-14T02:14:36.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "WebAPIDbContext.cs",
               "DocumentMoniker": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Models\\WebAPIDbContext.cs",
               "RelativeDocumentMoniker": "WebApi\\Models\\WebAPIDbContext.cs",
               "ToolTip": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\Models\\WebAPIDbContext.cs",
               "RelativeToolTip": "WebApi\\Models\\WebAPIDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA8AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-06T02:33:56.327Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-02-06T02:33:56.327Z"
             }
           ]
         }
