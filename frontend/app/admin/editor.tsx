@@ -1,10 +1,11 @@
 'use client'
 
-import { Dispatch, SetStateAction, useContext, useEffect, useState, Fragment } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect, useState, Fragment, MouseEventHandler, FormEventHandler } from "react";
 import { RadioGroup, Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, PersonIcon, CaretSortIcon } from '@radix-ui/react-icons';
 
-import { SessionInfo, NullSession, SessionContext, RolesInfo } from '../sessionCC'
+import { SessionInfo, NullSession, SessionContext, RolesInfo, UpdateAccount, SessionCCError } from '../sessionCC'
+import { useForm, SubmitHandler } from "react-hook-form";
 
 export const getUsers = async (): Promise<SessionInfo[]> => {
     const req = await fetch('/api/user')
@@ -82,7 +83,11 @@ const RolesForm = ({ user, rolesInfo, roleEditable, handler }: RolesFormProps) =
                                     filteredRoles.map((role, i) => (
                                         <Combobox.Option
                                             key={i}
-                                            className={`admin_user_panel_editor_roles_options_list_item${role.id == selected.id ? ' selected' : ''}`}
+                                            className={classNameFormat(
+                                                'admin_user_panel_editor_roles_options_list_item',
+                                                role.id == selected.id && 'selected',
+                                                role.id == user.role && 'initial'
+                                            )}
                                             value={role}
                                         >
                                             <div className="admin_user_panel_editor_roles_options_list_item_label">{role.label}</div>
@@ -105,6 +110,13 @@ const RolesForm = ({ user, rolesInfo, roleEditable, handler }: RolesFormProps) =
     )
 }
 
+type UserEditorFormType = {
+    userId: string | null,
+    userName: string | null,
+    role: number,
+    password: string | null
+}
+
 export type EditorProps = {
     user: SessionInfo,
     rolesInfo: RolesInfo,
@@ -112,6 +124,20 @@ export type EditorProps = {
     handler: Dispatch<SetStateAction<SessionInfo[]>>
 }
 export const EditorForm = ({ user, rolesInfo, roleEditable, handler }: EditorProps) => {
+    
+    const [isSignUp, setIsSignUp] = useState<boolean>(false)
+    const {
+        handleSubmit,
+        register,
+        formState: {
+            errors,
+            isValid,
+            isSubmitting
+        },
+        setValue,
+        setError
+    } = useForm<UserEditorFormType>({ mode: 'onChange' })
+    
     const [role, setRole] = useState<number>(0)
     const [userName, setUserName] = useState<string>('')
     const [password, setPassword] = useState<string | null>(null)
@@ -121,12 +147,32 @@ export const EditorForm = ({ user, rolesInfo, roleEditable, handler }: EditorPro
         setUserName(user.userName ?? '')
     }, [user])
 
-    const newUser = { ...user, userName, password, role }
+    const update = () => getUsers().then(handler)
+
+    const getCurrentUser = (): UserEditorFormType => {
+        return { ...user, userName, password, role }
+    }
+
+    const onSubmit: SubmitHandler<UserEditorFormType> = async (data) => {
+        const newUser: UserEditorFormType = getCurrentUser()
+        if (isValid) {
+            try {
+                await UpdateAccount(newUser.userId ?? '', newUser.userName ?? '', newUser.password, newUser.role)
+                await update()
+            }
+            catch(e) {
+                if (e instanceof SessionCCError) setError('root.serverError', { type: 'invalid_operation' })
+                return
+            }
+        }
+        return
+    }
 
     return (
-        <div className="admin_user_panel_editor">
+        <form className="admin_user_panel_editor" onSubmit={handleSubmit(onSubmit)}>
             <RolesForm user={user} rolesInfo={rolesInfo} roleEditable={roleEditable} handler={setRole} />
-            <pre style={{display: 'inline-block'}}>{JSON.stringify(newUser, null, 2)}</pre>
-        </div>
+            <pre style={{display: 'inline-block'}}>{JSON.stringify(getCurrentUser(), null, 2)}</pre>
+            <button type="submit">Update</button>
+        </form>
     )
 }

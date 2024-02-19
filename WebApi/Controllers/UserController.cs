@@ -64,7 +64,7 @@ namespace WebApi.Controllers
                 return BadRequest("同名のユーザーがいます");
             }
 
-            userModel = userModel.Merge(id, userRequestModel);
+            userModel = userModel.Merge(id, userRequestModel, true);
             _context.Entry(userModel).State = EntityState.Modified;
 
             try

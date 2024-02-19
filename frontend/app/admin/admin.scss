@@ -160,6 +160,9 @@
                                 &.selected {
                                     font-weight: bold;
                                 }
+                                &.initial {
+                                    background: rgba(34, 103, 240, 0.1);
+                                }
                                 &:hover {
                                     background: rgba(0, 0, 0, .1);
                                 }

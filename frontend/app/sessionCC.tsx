@@ -87,7 +87,7 @@ export const CreateAccount = async (userName: string, password: string): Promise
     return result as SessionInfo
 }
 
-export const UpdateAccount = async (userId: string, userName: string, password: string | null, role: number): Promise<SessionInfo> => {
+export const UpdateAccount = async (userId: string, userName: string, password: string | null, role: number): Promise<void> => {
     const method = 'PUT'
     const headers = {
         'Accept': 'application/json',
@@ -100,6 +100,5 @@ export const UpdateAccount = async (userId: string, userName: string, password: 
         console.error(text)
         throw new SessionCCError(10 < text.length ? `${text.slice(0, 10)}...` : text)
     }
-    const result = await request.json()
-    return result as SessionInfo
+    return
 }
