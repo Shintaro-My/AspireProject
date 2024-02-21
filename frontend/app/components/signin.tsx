@@ -3,7 +3,9 @@
 import { useEffect, useState, useContext, FormEvent, Dispatch, SetStateAction } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Tooltip } from 'react-tooltip'
-import { Switch } from '@headlessui/react'
+import { EyeOpenIcon, EyeClosedIcon } from '@radix-ui/react-icons'
+
+import CustomCheckBox from './custom/checkbox'
 
 import { SignIn, SessionInfo, CreateAccount, SessionCCError } from '../sessionCC'
 
@@ -18,6 +20,7 @@ type Props = {
 }
 const SignInForm = ({ handler, className }: Props) => {
     const [isSignUp, setIsSignUp] = useState<boolean>(false)
+    const [isPswrdVisible, setIsPswrdVisible] = useState<boolean>(false)
     const {
         handleSubmit,
         register,
@@ -58,12 +61,13 @@ const SignInForm = ({ handler, className }: Props) => {
             </label>
             <label className='label'>
                 <a data-tooltip-id='pswrd'></a>
-                <input type="password" className='label_value' placeholder='Password' { ...register('password', { required: true }) } />
+                <input type={ isPswrdVisible ? 'text' : 'password' } className='label_value' placeholder='Password' { ...register('password', { required: true }) } />
+                <button className='label_char simple' type='button' onClick={() => setIsPswrdVisible(!isPswrdVisible)}>
+                    { isPswrdVisible ? <EyeOpenIcon /> : <EyeClosedIcon /> }
+                </button>
             </label>
             <div className="check">
-                <Switch checked={isSignUp} onChange={setIsSignUp} className={`check_box${isSignUp ? ' checked' : ''}`}>
-                    <div className={`check_box_toggle${isSignUp ? ' checked' : ''}`} area-hidden='true'></div>
-                </Switch>
+                <CustomCheckBox checked={isSignUp} onChange={setIsSignUp} />
                 <div className="check_label">
                     <span className={isSignUp ? '' : 'bold'}>SignIn</span> or <span className={isSignUp ? 'bold' : ''}>Create</span>
                 </div>
@@ -95,4 +99,4 @@ const SignInForm = ({ handler, className }: Props) => {
     )
 }
 
-export default SignInForm;
+export default SignInForm

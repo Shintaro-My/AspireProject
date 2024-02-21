@@ -1,3 +1,4 @@
+@use "../components/mixin.scss";
 
 .admin {
     &_user {
@@ -64,6 +65,10 @@
             box-shadow: 1px 1px 3px #333;
             min-height: 1em;
             padding: .5em;
+
+            button.button {
+                @include mixin.button;
+            }
 
             > button.simple.close {
                 --size: 2.5em;

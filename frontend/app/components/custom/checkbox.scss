@@ -1,0 +1,34 @@
+
+.custom_check {
+    &[role="switch"] {
+        --check-height: 1.5em;
+        --check-width: 3em;
+        --check-pad: .1em;
+        align-items: center;
+        background: rgba(0, 0, 0, .1);
+        border: none;
+        border-radius: var(--check-width);
+        display: flex;
+        height: var(--check-height);
+        padding: 0;
+        transition: all .2s ease-in-out;
+        width: var(--check-width);
+    
+        &.checked {
+            background: rgba(0, 0, 0, .3);
+        }
+    }
+
+    &_toggle {
+        background: #fff;
+        border-radius: var(--check-height);
+        box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+        height: calc(var(--check-height) - var(--check-pad));
+        transition: all .2s ease-in-out;
+        width: calc(var(--check-height) - var(--check-pad));
+
+        &.checked {
+            transform: translateX(calc(var(--check-width) / 2 + var(--check-pad)));
+        }
+    }
+}

@@ -1,11 +1,11 @@
 'use client'
 
-import { Dispatch, SetStateAction, useContext, useEffect, useState, Fragment, use } from "react";
-import { RadioGroup, Combobox, Transition } from '@headlessui/react';
-import { CheckIcon, PersonIcon, CaretSortIcon, Cross1Icon } from '@radix-ui/react-icons';
+import { Dispatch, SetStateAction, useContext, useEffect, useState, Fragment, use } from "react"
+import { RadioGroup, Combobox, Transition } from '@headlessui/react'
+import { CheckIcon, EyeNoneIcon, PersonIcon, StarIcon, StarFilledIcon, Cross1Icon } from '@radix-ui/react-icons'
 
 import { SessionInfo, NullSession, SessionContext, RolesInfo } from '../sessionCC'
-import { getUsers, classNameFormat, EditorForm } from "./editor";
+import { getUsers, classNameFormat, EditorForm } from "./editor"
 
 import "./admin.scss"
 
@@ -17,9 +17,18 @@ const AdminPage = () => {
     const rolesInfo = sessionContext?.rolesInfo ?? {}
     const isMe = (user:SessionInfo): boolean => user.userId == sessionContext?.session?.userId
 
+    const getRoleIcons = (n: number) => {
+        const icons = [<EyeNoneIcon />, <PersonIcon />, <StarIcon />, <StarFilledIcon />]
+        return icons[n] ?? <></>
+    }
+
     useEffect(() => {
         getUsers().then(setUsers)
     }, [])
+
+    useEffect(() => {
+        setSelected(NullSession)
+    }, [users])
 
     return (
         <>
@@ -36,7 +45,7 @@ const AdminPage = () => {
                         <>
                             <div className={classNameFormat('admin_user_users_option_content', isMe(user) && 'self', active && 'active', checked && 'checked')} title={user.userId ?? ''}>
                                 <div className="admin_user_users_option_content_icon">
-                                    <PersonIcon />
+                                    { getRoleIcons(user.role) }
                                 </div>
 
                                 <div className='admin_user_users_option_content_group'>
@@ -82,7 +91,7 @@ const AdminPage = () => {
                     </div>
             </div>
         </>
-    );
+    )
 }
 
 export default AdminPage

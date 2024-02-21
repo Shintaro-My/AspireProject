@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react';
-import { RadioGroup } from '@headlessui/react';
-import { CheckIcon } from '@radix-ui/react-icons';
+import React, { useState } from 'react'
+import { RadioGroup } from '@headlessui/react'
+import { CheckIcon } from '@radix-ui/react-icons'
 
 export type DataFormat = {
     date: string,
@@ -59,6 +59,6 @@ const ShowInfo = ({ fetchedData }: { fetchedData: DataFormat[] }) => {
             ))}
         </RadioGroup>
     )
-};
+}
 
-export default ShowInfo;
+export default ShowInfo

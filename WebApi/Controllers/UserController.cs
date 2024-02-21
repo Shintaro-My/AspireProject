@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebApi.Context;
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -15,10 +16,12 @@ namespace WebApi.Controllers
     public class UserController : ControllerBase
     {
         private readonly WebAPIDbContext _context;
+        private readonly SSEManagerContext _wsContext;
 
-        public UserController(WebAPIDbContext context)
+        public UserController(WebAPIDbContext context, SSEManagerContext wsContext)
         {
             _context = context;
+            _wsContext = wsContext;
         }
 
         // GET: api/User
@@ -140,12 +143,12 @@ namespace WebApi.Controllers
         }
         private bool CheckMySelf(Guid targetUserId)
         {
-            var role = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            if (role == null)
+            var userId = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
             {
                 return false;
             }
-            return targetUserId.ToString() == role;
+            return targetUserId.ToString() == userId;
         }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApi.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using WebApi.Context;
 
 namespace WebApi.Controllers
 {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
 type Props = {
   params: { id: string }
@@ -6,14 +6,14 @@ type Props = {
 }
  
 export const generateMetadata = ({ params, searchParams }: Props): Metadata => {
-  const id = params.id;
+  const id = params.id
   return {
     title: `ID: ${id} | Index`,
   }
 }
 
 const Layout = ({ children }: Readonly<{children: React.ReactNode}>) => {
-  return <div className="content">{children}</div>;
+  return <div className="content">{children}</div>
 }
 
-export default Layout;
+export default Layout

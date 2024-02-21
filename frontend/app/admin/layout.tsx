@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react"
 
 import { SessionInfo, NullSession, SessionContext } from '../sessionCC'
 
@@ -21,7 +21,7 @@ const Layout = ({ children }: Readonly<{children: React.ReactNode}>) => {
         <div className="admin">
             {children}
         </div>
-    );
+    )
 }
 
 export default Layout

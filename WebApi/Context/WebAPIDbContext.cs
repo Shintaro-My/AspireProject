@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System;
+using WebApi.Models;
 
-namespace WebApi.Models
+namespace WebApi.Context
 {
-    public class WebAPIDbContext: DbContext
+    public class WebAPIDbContext : DbContext
     {
 
         public WebAPIDbContext(DbContextOptions options) : base(options)
-        {  }
+        { }
 
         public DbSet<UserModel> UserModels { get; set; }
         public DbSet<TrackingModel> TrackingModels { get; set; }

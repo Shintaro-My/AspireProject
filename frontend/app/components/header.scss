@@ -50,7 +50,7 @@
                 transform: translateY(calc(-1 * var(--content-gap)));
             }
 
-            button:not(.check_box) {
+            button:not(.check_box, .simple) {
                 @include mixin.button;
 
                 &.sub {
