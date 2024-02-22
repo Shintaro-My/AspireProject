@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState } from "react"
 
-import { SessionInfo, NullSession, SessionContext } from '../sessionCC'
+import { SessionInfo, NullSession, SessionContext } from '../components/context/session'
 
 
 const Layout = ({ children }: Readonly<{children: React.ReactNode}>) => {

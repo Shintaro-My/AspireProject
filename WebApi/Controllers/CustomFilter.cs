@@ -7,6 +7,18 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+    public class SSEActionAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            var headers = context.HttpContext.Response.Headers;
+
+            headers.Append("Content-Type", "text/event-stream");
+            headers.Append("Cache-Control", "no-cache");
+            headers.Append("Connection", "keep-alive");
+        }
+    }
+
     public class IsHigherThanAttribute : ActionFilterAttribute
     {
         public UserRoles _role;

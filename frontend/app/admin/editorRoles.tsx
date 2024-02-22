@@ -5,9 +5,9 @@ import { RadioGroup, Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, PersonIcon, CaretSortIcon } from '@radix-ui/react-icons'
 import { useForm, SubmitHandler } from "react-hook-form"
 
-import { SessionInfo, NullSession, SessionContext, RolesInfo, UpdateAccount, SessionCCError } from '../sessionCC'
+import { SessionInfo, NullSession, SessionContext, RolesInfo, UpdateAccount, SessionContextError } from '../components/context/session'
 import { getUsers, classNameFormat } from './editor'
-import CustomCheckBox from "../components/custom/checkbox"
+import CustomCheckBox from "../components/element/checkbox"
 
 type RoleFragment = { id: number, label: string }
 type RolesFormProps = {

@@ -6,7 +6,7 @@ import { Dispatch, Fragment, MouseEvent, SetStateAction } from 'react'
 import Link from 'next/link'
 import { useEffect, useState, useContext } from 'react'
 
-import { SessionContext, SessionInfo, NullSession, FetchSession, RolesInfo, SignOut } from '../sessionCC'
+import { SessionContext, SessionInfo, NullSession, FetchSession, RolesInfo, SignOut } from './context/session'
 
 import SignInForm from './signin'
 

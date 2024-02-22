@@ -7,6 +7,10 @@ using WebApi.Util;
 using System.Text;
 using Newtonsoft.Json;
 using System.Security.Claims;
+using static System.Net.Mime.MediaTypeNames;
+using Microsoft.AspNetCore.Mvc.Filters;
+using WebApi.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WebApi.Controllers
 {
@@ -19,6 +23,8 @@ namespace WebApi.Controllers
         {
             _sseContext = sseContext;
         }
+
+        [SSEAction]
         [Route("default")]
         public async Task Get()
         {
@@ -27,27 +33,37 @@ namespace WebApi.Controllers
                 ? Guid.Parse(userIdBase)
                 : null;
 
-            Response.Headers.Add("Content-Type", "text/event-stream");
-            Response.Headers.Add("Cache-Control", "no-cache");
-            Response.Headers.Add("Connection", "keep-alive");
-            //Response.Headers.Add("Transfer-Encoding", "chunked");
-
             Guid id = _sseContext.AddQueue(userId);
             _sseContext.AddMsg(id, new { message = "connect", id = id.ToString() });
 
             while (true)
             {
+                /*
+                 JS側の実装
+const eventSource = new EventSource(`/sse/default`);
+eventSource.addEventListener('message', e => {
+    const data = JSON.parse(e.data);
+    console.log(data);
+});
+
+eventSource.addEventListener('ping', e => {
+    const data = JSON.parse(e.data);
+    console.log('ping', new Date(data));
+}); 
+                 */
                 try
                 {
-                    var text = _sseContext.GetMsg(id);
-                    if (text != null)
+                    await Task.Delay(200);
+                    var message = _sseContext.GetMsg(id);
+                    if (message != null)
                     {
-                        await Response.WriteAsync("event: message\n");
-                        await Response.WriteAsync($"data: {text}");
-                        await Response.WriteAsync("\n\n");
-                        await Response.Body.FlushAsync();
+                        var check = await SendEvent("message", message);
+                        if (!check) break;
                     }
-                    await Task.Delay(1000);
+                    else
+                    {
+                        await SendEvent("ping", DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -59,17 +75,22 @@ namespace WebApi.Controllers
 
         }
 
-        private void Handler(Guid id, string text)
+        private async Task<bool> SendEvent(string eventName, object message)
         {
             try
             {
-                var data = JsonConvert.DeserializeObject(text);
-                Console.WriteLine($"{id}: {text}");
-                Console.WriteLine(data);
+                var json = JsonConvert.SerializeObject(message);
+                await Response.WriteAsync($"event: {eventName}\n");
+                await Response.WriteAsync($"data: {json}");
+                await Response.WriteAsync("\n\n");
+                await Response.Body.FlushAsync();
+
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                return false;
             }
 
         }

@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction, createContext, useContext, useState } from "react"
 
-export class SessionCCError extends Error {}
+export class SessionContextError extends Error {}
 
 export type SessionInfo = {
     userId: string | null,
@@ -81,7 +81,7 @@ export const CreateAccount = async (userName: string, password: string): Promise
     if (!request.ok) {
         const text = await request.text()
         console.error(text)
-        throw new SessionCCError(10 < text.length ? `${text.slice(0, 10)}...` : text)
+        throw new SessionContextError(10 < text.length ? `${text.slice(0, 10)}...` : text)
     }
     const result = await request.json()
     return result as SessionInfo
@@ -98,7 +98,7 @@ export const UpdateAccount = async (userId: string, userName: string, password: 
     if (!request.ok) {
         const text = await request.text()
         console.error(text)
-        throw new SessionCCError(10 < text.length ? `${text.slice(0, 10)}...` : text)
+        throw new SessionContextError(10 < text.length ? `${text.slice(0, 10)}...` : text)
     }
     return
 }

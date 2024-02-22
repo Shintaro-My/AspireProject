@@ -99,13 +99,12 @@ namespace WebApi.Context
         /// <param name="id"></param>
         /// <param name="response"></param>
         /// <returns></returns>
-        public string? GetMsg(Guid id)
+        public object? GetMsg(Guid id)
         {
             var queue = GetQueueById(id);
             if (queue.Count == 0) return null;
             var data = queue.Dequeue();
-            var json = JsonConvert.SerializeObject(data);
-            return json;
+            return data;
         }
 
 
