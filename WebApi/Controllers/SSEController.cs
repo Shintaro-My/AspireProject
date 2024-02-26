@@ -26,7 +26,7 @@ namespace WebApi.Controllers
 
         [SSEAction]
         [Route("default")]
-        public async Task Get()
+        public async Task Get(CancellationToken cancellationToken)
         {
             var userIdBase = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             Guid? userId = userIdBase != null
@@ -53,6 +53,7 @@ eventSource.addEventListener('ping', e => {
                  */
                 try
                 {
+                    cancellationToken.ThrowIfCancellationRequested();
                     await Task.Delay(200);
                     var message = _sseContext.GetMsg(id);
                     if (message != null)
@@ -65,16 +66,21 @@ eventSource.addEventListener('ping', e => {
                         await SendEvent("ping", DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
                     }
                 }
-                catch (Exception ex)
+                catch (OperationCanceledException)
                 {
-                    Console.WriteLine(ex);
+                    await _sseContext.RemoveQueue(id);
                     break;
                 }
             }
-            await _sseContext.RemoveQueue(id);
 
         }
 
+        /// <summary>
+        /// Server-Sent Eventの規格で永続レスポンスに対してメッセージを書き込む
+        /// </summary>
+        /// <param name="eventName"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private async Task<bool> SendEvent(string eventName, object message)
         {
             try

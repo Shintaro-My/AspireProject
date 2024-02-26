@@ -7,6 +7,9 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+    /// <summary>
+    /// Server-Sent Event送出用の永続レスポンスに変更するためのヘッダーを設定するアクションフィルター
+    /// </summary>
     public class SSEActionAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -19,6 +22,9 @@ namespace WebApi.Controllers
         }
     }
 
+    /// <summary>
+    /// 一定以上のユーザロール以外からのリクエストを弾くためのアクションフィルター
+    /// </summary>
     public class IsHigherThanAttribute : ActionFilterAttribute
     {
         public UserRoles _role;
