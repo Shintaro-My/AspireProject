@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "JlF/vf1C1+Cg4Po6c+BpFEFxzAGIapu6Kj9OREuffgLOqdPe29gwFfzntGu8JrNmhVeNHiG/YeLHvc3YtkMhLg==",
+  "dgSpecHash": "sthKPucdOXE5v64o/RYivDQwXZDH3Wn+BiOZwkyXzRZPQSC42DH4WpCI2b9dxeoS9nS8J3Ehcs4rlVAlnCC96g==",
   "success": true,
   "projectFilePath": "C:\\Users\\ShintaroMiyahara\\source\\repos\\AspireProject\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ShintaroMiyahara\\.nuget\\packages\\concurrenthashset\\1.3.0\\concurrenthashset.1.3.0.nupkg.sha512",
     "C:\\Users\\ShintaroMiyahara\\.nuget\\packages\\dsharpplus\\4.4.6\\dsharpplus.4.4.6.nupkg.sha512",
     "C:\\Users\\ShintaroMiyahara\\.nuget\\packages\\dsharpplus.commandsnext\\4.4.6\\dsharpplus.commandsnext.4.4.6.nupkg.sha512",
+    "C:\\Users\\ShintaroMiyahara\\.nuget\\packages\\dsharpplus.interactivity\\4.4.6\\dsharpplus.interactivity.4.4.6.nupkg.sha512",
     "C:\\Users\\ShintaroMiyahara\\.nuget\\packages\\dsharpplus.slashcommands\\4.4.6\\dsharpplus.slashcommands.4.4.6.nupkg.sha512",
     "C:\\Users\\ShintaroMiyahara\\.nuget\\packages\\google.protobuf\\3.22.5\\google.protobuf.3.22.5.nupkg.sha512",
     "C:\\Users\\ShintaroMiyahara\\.nuget\\packages\\grpc.core.api\\2.52.0\\grpc.core.api.2.52.0.nupkg.sha512",
