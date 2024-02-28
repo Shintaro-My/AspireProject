@@ -2,8 +2,8 @@
 
 import { useContext } from "react"
 
-import { SessionContext } from '../components/context/session'
-import { SSEProvider } from '../components/context/sse'
+import { SessionContext } from '../../context/session'
+import { SSEProvider } from '../../context/sse'
 
 
 const Layout = ({ children }: Readonly<{children: React.ReactNode}>) => {

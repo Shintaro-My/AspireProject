@@ -5,9 +5,9 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { Tooltip } from 'react-tooltip'
 import { EyeOpenIcon, EyeClosedIcon } from '@radix-ui/react-icons'
 
-import CustomCheckBox from './element/checkbox'
+import CustomCheckBox from '../../elements/checkbox/checkbox'
 
-import { SignIn, SessionInfo, CreateAccount, SessionContextError } from './context/session'
+import { SignIn, SessionInfo, CreateAccount, SessionContextError } from '../../context/session'
 
 type UserFormType = {
     username: string,

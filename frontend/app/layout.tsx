@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { Inter, Fira_Mono } from "next/font/google"
 import "./globals.scss"
 
-import { SessionProvider, RolesInfo, NullSession } from "./components/context/session"
-import Header from "./components/header"
+import { SessionProvider, RolesInfo, NullSession } from "../context/session"
+import Header from "../components/header/header"
 
 const inter = Inter({ subsets: ["latin"] })
 

@@ -2,7 +2,8 @@
 
 import { useContext } from "react"
 
-import { SSEContext, SSELogElement } from '../components/context/sse'
+import { SSEContext } from '../../context/sse'
+import { SSELogElement } from '../../components/sse/sselog'
 
 
 const TestSSEPage = () => {

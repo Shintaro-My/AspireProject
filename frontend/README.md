@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# .NET AspireでNext.jsを使ってみる
 
-First, run the development server:
+# ディレクトリ構造
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 理想
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* app
+  * 実際にクライアントで見ることになるページを保管する
+  * ホーム以外はページカテゴリごとにフォルダ分け
+  * ホーム・ページカテゴリごとに`layout.tsx`と`page.tsx`を配置
+  * そのページカテゴリでのみ使うCSS（SCSS）ファイルなども配置
+* components
+  * `app`内で定義するには冗長なものをこちらに
+  * 特定箇所でしか使わないもののみ（汎用的なものは`elements`に）
+  * フォルダ分けの際には、`app`で使われているページカテゴリや象徴的な名前で分類
+* context
+  * `useContext`で共通化するデータを保管する`tsx`を配置
+* elements
+  * 使用する場所を選ばない部品単位の`tsx`を配置
+  * 部品にのみ適用するCSS（SCSS）ファイルなども配置
+  * 部品ごとにフォルダ分け
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ToDo
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+* `app/client`内のファイルがぐちゃぐちゃなので`components`などに移動
+* `components/mixin.scss`はどこに置くべきか考える
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# メモ
+* TestSSEにアクセスするたびに`EventStream`が増える

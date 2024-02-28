@@ -5,8 +5,8 @@ import { RadioGroup, Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, PersonIcon, CaretSortIcon } from '@radix-ui/react-icons'
 import { useForm, SubmitHandler } from "react-hook-form"
 
-import { SessionInfo, NullSession, SessionContext, RolesInfo, UpdateAccount, SessionContextError } from '../components/context/session'
-import CustomCheckBox from "../components/element/checkbox"
+import { SessionInfo, NullSession, SessionContext, RolesInfo, UpdateAccount, SessionContextError } from '../../context/session'
+import CustomCheckBox from "../../elements/checkbox/checkbox"
 import { RolesForm } from "./editorRoles"
 
 export const getUsers = async (): Promise<SessionInfo[]> => {

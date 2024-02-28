@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useContext, useEffect, useState, Fragment, us
 import { RadioGroup, Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, EyeNoneIcon, PersonIcon, StarIcon, StarFilledIcon, Cross1Icon } from '@radix-ui/react-icons'
 
-import { SessionInfo, NullSession, SessionContext, RolesInfo } from '../components/context/session'
+import { SessionInfo, NullSession, SessionContext, RolesInfo } from '../../context/session'
 import { getUsers, classNameFormat, EditorForm } from "./editor"
 
 import "./admin.scss"
