@@ -1,104 +1,83 @@
 'use client'
 
 import { Dispatch, SetStateAction, createContext, useContext, useState } from "react"
+import './sselog.scss'
 
-export class SSEContextError extends Error {}
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
-export type SessionInfo = {
-    userId: string | null,
-    userName: string | null,
-    role: number
+type SSESetter = {
+    // source: EventSource | null,
+    // setSource: Dispatch<SetStateAction<EventSource | null>>,
+    messages: SSEMessage[],
+    ping: number | null
 }
 
-export interface RolesInfo {
-    [key: number]: string
-}
+export const SSEContext = createContext<SSESetter | null>(null)
 
-type SesssionSetter = {
-    session: SessionInfo,
-    setSession: Dispatch<SetStateAction<SessionInfo>>,
-    rolesInfo: RolesInfo
+export type SSEMessage = {
+    id?: string,
+    type: string,
+    message: any
 }
-
-export const NullSession: SessionInfo = {
-    userId: null,
-    userName: null,
-    role: -1
-}
-
-export const SessionContext = createContext<SesssionSetter | null>(null)
 
 type Props = {
-    rolesInfo?: RolesInfo
+    isValid: boolean,
     children: React.ReactNode
 }
-export const SessionProvider = ({ children, rolesInfo }: Props) => {
-    const [session, setSession] = useState<SessionInfo>(NullSession)
-    const value = { session, setSession, rolesInfo: rolesInfo ?? {} }
-    return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>
+export const SSEProvider = ({ children, isValid }: Props) => {
+    const [messages, setMessages] = useState<SSEMessage[]>([])
+    const [ping, setPing] = useState<number | null>(null)
+
+    const [source, setSource] = useState<EventSource | null>(null)
+
+    if (isValid) {
+        if (!source) {
+            const sse = new EventSource('/sse/default');
+            sse.addEventListener('message', (e: MessageEvent) => {
+                setMessages([JSON.parse(e.data), ...messages].slice(0, 250))
+            })
+            sse.addEventListener('ping', (e: MessageEvent) => {
+                setPing(JSON.parse(e.data))
+            })
+            console.log('SSEProvider: active')
+            setSource(sse)
+        }
+    }
+    else {
+        if (source) {
+            source.close()
+            console.log('SSEProvider: inactive')
+            setSource(null)
+        }
+    }
+    const value: SSESetter = { messages, ping }
+    return <SSEContext.Provider value={value}>{children}</SSEContext.Provider>
 }
 
-export const FetchSession = async (): Promise<SessionInfo | null> => {
-    const request = await fetch('/api/auth/session')
-    if (!request.ok) {
-        return null
-    }
-    const result = await request.json()
-    return result as SessionInfo
-}
 
-export const SignIn = async (userName: string, password: string): Promise<SessionInfo | null> => {
-    const method = 'POST'
-    const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-    const body = JSON.stringify({ userName, password })
-    const request = await fetch('/api/auth', { method, headers, body })
-    if (!request.ok) {
-        return null
-    }
-    const result = await request.json()
-    return result as SessionInfo
-}
+const dateFormatter = new Intl.DateTimeFormat('ja-JP', {
+    dateStyle: 'medium',
+    timeStyle: 'medium'
+})
+export const SSELogElement = () => {
+    const sseContext = useContext(SSEContext)
+    const ping = sseContext?.ping
+    const msgs = sseContext?.messages ?? []
 
-export const SignOut = async (): Promise<SessionInfo | null> => {
-    const request = await fetch('/api/auth')
-    if (!request.ok) {
-        return null
-    }
-    return NullSession
-}
+    const date = ping ? dateFormatter.format(new Date(ping)) : '-'
 
-export const CreateAccount = async (userName: string, password: string): Promise<SessionInfo> => {
-    const method = 'POST'
-    const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-    const body = JSON.stringify({ userName, password, role: 0 })
-    const request = await fetch('/api/user', { method, headers, body })
-    if (!request.ok) {
-        const text = await request.text()
-        console.error(text)
-        throw new SSEContextError(10 < text.length ? `${text.slice(0, 10)}...` : text)
-    }
-    const result = await request.json()
-    return result as SessionInfo
-}
-
-export const UpdateAccount = async (userId: string, userName: string, password: string | null, role: number): Promise<void> => {
-    const method = 'PUT'
-    const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-    const body = JSON.stringify({ userName, password, role })
-    const request = await fetch(`/api/user/${userId}`, { method, headers, body })
-    if (!request.ok) {
-        const text = await request.text()
-        console.error(text)
-        throw new SSEContextError(10 < text.length ? `${text.slice(0, 10)}...` : text)
-    }
-    return
+    return (
+        <>
+        <div className='sselog'>
+            <div className="sselog_ago">
+                <div className="sselog_ago_label">LastUpdate:</div>
+                <div className="sselog_ago_value">{date}</div>
+            </div>
+            { msgs.map((msg, i) => (
+                <SimpleBar className="sselog_msg" key={i}>{JSON.stringify(msg)}</SimpleBar>
+            )) }
+        </div>
+        </>
+    )
 }

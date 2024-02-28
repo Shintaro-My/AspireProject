@@ -18,6 +18,19 @@
     width: 100%;
     z-index: 3;
 
+    &_links {
+        font-family: var(--fira-mono), Courier, monospace;
+        
+        > a {
+            cursor: pointer;
+            margin: .25em;
+
+            &.active {
+                font-weight: bold;
+            }
+        }
+    }
+
     .user_info {
         position: relative;
 

@@ -34,7 +34,7 @@ namespace WebApi.Controllers
                 : null;
 
             Guid id = _sseContext.AddQueue(userId);
-            _sseContext.AddMsg(id, new { message = "connect", id = id.ToString() });
+            _sseContext.AddMsg(id, new { type = "connect", message = "Connect!", id = id.ToString() });
 
             while (true)
             {

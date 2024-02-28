@@ -15,7 +15,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
-    "react-tooltip": "^5.26.2"
+    "react-tooltip": "^5.26.2",
+    "simplebar-react": "^3.2.4"
   },
   "devDependencies": {
     "@types/node": "^20",

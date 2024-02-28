@@ -1,11 +1,17 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Fira_Mono } from "next/font/google"
 import "./globals.scss"
 
 import { SessionProvider, RolesInfo, NullSession } from "./components/context/session"
 import Header from "./components/header"
 
 const inter = Inter({ subsets: ["latin"] })
+
+const firaMono = Fira_Mono({
+    weight: ['400', '700'],
+    subsets: ['latin'],
+    variable: '--fira-mono'
+})
 
 export const metadata: Metadata = {
   title: "Home",
@@ -30,7 +36,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${firaMono.variable}`}>
         <SessionProvider rolesInfo={rolesInfo}>
           <Header></Header>
           <div className="main">

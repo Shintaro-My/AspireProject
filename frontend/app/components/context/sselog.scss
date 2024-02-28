@@ -1,0 +1,25 @@
+
+.sselog {
+    background: #fff;
+    box-shadow: 0 0 3px #aaa;
+    font-family: var(--fira-mono), Courier, monospace;
+    padding: .5em;
+
+    &_ago {
+        align-items: center;
+        display: flex;
+        vertical-align: middle;
+
+        &_label {
+            font-weight: bold;
+            padding: .35em;
+        }
+    }
+
+    &_msg {
+        background: #eee;
+        margin: .25em 0;
+        padding: .35em;
+        white-space: nowrap;
+    }
+}

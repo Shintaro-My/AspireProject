@@ -11,13 +11,14 @@ import { SessionContext, SessionInfo, NullSession, FetchSession, RolesInfo, Sign
 import SignInForm from './signin'
 
 import "./header.scss"
+import { usePathname } from 'next/navigation'
 
-type Props = {
+type CheckSessionProps = {
     session: SessionInfo,
     rolesInfo: RolesInfo,
     handler?: Dispatch<SetStateAction<SessionInfo>>
 }
-const CheckSession = ({ session, rolesInfo, handler }: Props) => {
+const CheckSession = ({ session, rolesInfo, handler }: CheckSessionProps) => {
     const [open, setOpen] = useState<boolean>()
     const [disable, setDisable] = useState<boolean>(false)
     const role = session.role in rolesInfo ? rolesInfo[session.role] : "null"
@@ -73,11 +74,26 @@ const CheckSession = ({ session, rolesInfo, handler }: Props) => {
     )
 }
 
+type CustomLinkProps = {
+    href: string,
+    currentPath?: string,
+    children: React.ReactNode
+}
+const CustomLink = ({ href, currentPath, children }: CustomLinkProps) => {
+    const isActive = currentPath == href
+    return (
+        <Link href={href} className={isActive ? 'active' : ''}>
+            { children }
+        </Link>
+    )
+}
+
 const Header = () => {
     const sessionContext = useContext(SessionContext)
     const session: SessionInfo = sessionContext?.session ?? NullSession
     const rolesInfo: RolesInfo = sessionContext?.rolesInfo ?? {}
 
+    const path = usePathname()
 
     useEffect(() => {
         if (session == NullSession) {
@@ -92,9 +108,10 @@ const Header = () => {
 
     return (
         <header className="header">
-            <div className="link_wrap">
-                <Link href="/">Main</Link>
-                <Link href="/admin">Admin</Link>
+            <div className="header_links">
+                <CustomLink currentPath={path} href="/">Main</CustomLink>
+                <CustomLink currentPath={path} href="/testsse">TestSSE</CustomLink>
+                <CustomLink currentPath={path} href="/admin">Admin</CustomLink>
             </div>
             <CheckSession session={session} rolesInfo={rolesInfo} handler={sessionContext?.setSession}></CheckSession>
         </header>
