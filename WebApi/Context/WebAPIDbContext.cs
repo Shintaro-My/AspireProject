@@ -12,6 +12,7 @@ namespace WebApi.Context
         { }
 
         public DbSet<UserModel> UserModels { get; set; }
+        public DbSet<MessageModel> MessageModels { get; set; }
         public DbSet<TrackingModel> TrackingModels { get; set; }
 
 

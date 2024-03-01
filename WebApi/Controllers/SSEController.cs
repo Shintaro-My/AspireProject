@@ -24,6 +24,12 @@ namespace WebApi.Controllers
             _sseContext = sseContext;
         }
 
+        /// <summary>
+        /// サーバーから動的にクライアントにメッセージを送信するためのアクション
+        /// Server-Sent Event実装
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [SSEAction]
         [Route("default")]
         public async Task Get(CancellationToken cancellationToken)
@@ -38,19 +44,6 @@ namespace WebApi.Controllers
 
             while (true)
             {
-                /*
-                 JS側の実装
-const eventSource = new EventSource(`/sse/default`);
-eventSource.addEventListener('message', e => {
-    const data = JSON.parse(e.data);
-    console.log(data);
-});
-
-eventSource.addEventListener('ping', e => {
-    const data = JSON.parse(e.data);
-    console.log('ping', new Date(data));
-}); 
-                 */
                 try
                 {
                     cancellationToken.ThrowIfCancellationRequested();

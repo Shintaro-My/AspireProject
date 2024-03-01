@@ -12,6 +12,24 @@ namespace WebApi.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "MessageModels",
+                columns: table => new
+                {
+                    MessageId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    FirstMessageId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ReplyMessageId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    ToUserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Message = table.Column<string>(type: "TEXT", nullable: false),
+                    CreatedBy = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    UpdatedAt = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MessageModels", x => x.MessageId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TrackingModels",
                 columns: table => new
                 {
@@ -54,6 +72,9 @@ namespace WebApi.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "MessageModels");
+
             migrationBuilder.DropTable(
                 name: "TrackingModels");
 

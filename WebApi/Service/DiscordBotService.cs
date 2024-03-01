@@ -6,6 +6,9 @@ using WebApi.Service.DiscordBot;
 
 namespace WebApi.Service
 {
+    /// <summary>
+    /// バックグラウンドタスクとして、Discord Botを起動する試み
+    /// </summary>
     public class DiscordBotService: BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

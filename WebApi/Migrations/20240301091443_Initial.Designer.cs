@@ -6,13 +6,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Context;
 
-
 #nullable disable
 
 namespace WebApi.Migrations
 {
     [DbContext(typeof(WebAPIDbContext))]
-    [Migration("20240214042033_Initial")]
+    [Migration("20240301091443_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,6 +19,39 @@ namespace WebApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.1");
+
+            modelBuilder.Entity("WebApi.Models.MessageModel", b =>
+                {
+                    b.Property<Guid>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("FirstMessageId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("ReplyMessageId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ToUserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("MessageModels");
+                });
 
             modelBuilder.Entity("WebApi.Models.TrackingModel", b =>
                 {

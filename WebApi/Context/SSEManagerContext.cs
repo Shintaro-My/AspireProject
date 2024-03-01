@@ -13,20 +13,20 @@ namespace WebApi.Context
         private readonly Dictionary<Guid, (Guid? userId, Queue<object> queue)> _queues = new();
 
         /// <summary>
-        /// スレッドセーフな形で登録済みのWebSocketを返却します
+        /// スレッドセーフな形で登録済みのQueueとUserIdを返却します
         /// </summary>
         /// <returns></returns>
         public ConcurrentDictionary<Guid, (Guid? userId, Queue<object> queue)> GetAll() => new(_queues);
 
         /// <summary>
-        /// 一意のIDからWebSocketを取得します
+        /// 一意のIDからQueueを取得します
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public Queue<object> GetQueueById(Guid id) => _queues[id].queue;
 
         /// <summary>
-        /// 新規にWebSocketを登録します
+        /// 新規にQueueとUserIdを登録します
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="webSocket"></param>
@@ -38,7 +38,7 @@ namespace WebApi.Context
             return id;
         }
         /// <summary>
-        /// WebSocketの登録を解除します
+        /// Queueの登録を解除します
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -76,6 +76,11 @@ namespace WebApi.Context
             }
         }
 
+        public IEnumerable<Guid> GetQueueIdsByUserId(Guid userId)
+        {
+            return _queues.Where(pair => pair.Value.userId == userId).Select(pair => pair.Key);
+        }
+
         /// <summary>
         /// 一致するUserIdとともに登録されたQueueにメッセージを登録します
         /// </summary>
@@ -84,11 +89,11 @@ namespace WebApi.Context
         /// <returns></returns>
         public void AddMsgByUserIds(List<Guid> userIds, object data)
         {
-            foreach ((var userId, var queue) in _queues.Values)
+            foreach (var userId in userIds)
             {
-                if (userId != null && userIds.Contains(userId.Value))
+                foreach(var id in GetQueueIdsByUserId(userId).ToList())
                 {
-                    AddMsg(userId.Value, data);
+                    AddMsg(id, data);
                 }
             }
         }
@@ -103,8 +108,7 @@ namespace WebApi.Context
         {
             var queue = GetQueueById(id);
             if (queue.Count == 0) return null;
-            var data = queue.Dequeue();
-            return data;
+            return queue.Dequeue();
         }
 
 
